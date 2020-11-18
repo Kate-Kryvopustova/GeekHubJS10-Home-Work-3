@@ -1,0 +1,123 @@
+:root {
+  --main-spacing: 15px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: var(--main-spacing);
+}
+
+#name-pet {
+  margin-left: var(--main-spacing);
+  color: brown;
+}
+
+.register-Pet {
+  margin: var(--main-spacing);
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+}
+
+.register__name {
+  flex-grow: 1;
+}
+
+.register__time-life-pet {
+  flex-grow: 1;
+}
+
+.register__button {
+  flex-grow: 1;
+}
+
+#inputName {
+  font-style: italic;
+  background-color: seashell;
+}
+
+#warning {
+  text-align: center;
+  color: red;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+}
+
+.content__add-time-life {
+  flex-grow: 1;
+  margin: var(--main-spacing);
+}
+
+span {
+  margin-right: var(--main-spacing);
+}
+
+.content__buttons {
+  margin: var(--main-spacing);
+  flex-grow: 1;
+}
+
+button {
+  margin: 5px;
+}
+
+#restart {
+  border-radius: 25px;
+  font-size: 25px;
+  font-style: italic;
+} 
+
+.content__day-life {
+  text-align: center;
+}
+
+#content__info {
+  text-align: center;
+  color: red;
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.info__water {
+  display: flex;
+}
+
+#sad-cat {
+  display: none;
+}
+
+.info-pet {
+  margin: var(--main-spacing);
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+}
+
+#info__water {
+  flex-grow: 1;
+}
+
+#info__happy{
+  flex-grow: 1;
+}
+
+#info__sleep{
+  flex-grow: 1;
+}
