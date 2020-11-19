@@ -10,7 +10,7 @@
 
 // function myForEach
 const myarr = [1, 2, 3];
-const arr = ["Яблоко", "Апельсин", "Груша"];
+const array1 = ["Яблоко", "Апельсин", "Груша"];
 
 function myForEach(array, callback) {
   for( let i = 0; i < array.length; i++ ) {
@@ -23,14 +23,14 @@ myForEach(myarr, function(number) {
 });
 
 
-myForEach(arr, function(item, index, array) {
+myForEach(array1, function(item, index, array) {
   console.log(index + ':' + item + '(array:' + array + ')' );
 });
 
 
 //function myMap
 
-const sample = [1, 2, 3, 4, 5];
+const test = [1, 2, 3, 4, 5];
 
 function myMap(array, callback) {
   result = [];
@@ -39,15 +39,74 @@ function myMap(array, callback) {
   }
 }
 
-myMap(sample, function(array){
+myMap(test, function(array){
   result[result.length] = array * 2
   console.log(result)
 })
 
 
-//function mySort
+
+//function myFind
+
+const array = [5, 2, 3, 4, 5];
+const findElement = [3];
+
+function myFind(array, findElem) {
+  let result = [];
+  check: for (let i = 0; i <= array.length; i++) {
+    if (array[i] === findElem[0]) {
+      if (result[0] !== findElem) {
+        result[result.length] = array[i];
+        break check;
+      }
+    }
+  }
+  if (result[0] === findElement[0]) {
+    return result;
+  } else {
+    return undefined;
+  }
+}
+console.log(myFind(array, findElement));
 
 //function myFilter
 
-//function myFind
+const sample = [1, 2, 3, 4, 5];
+
+function myFilter1(array) {
+  let result = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] !== 2) {
+      result[result.length] = array[i];
+    }
+  }
+  return result;
+}
+
+console.log(myFilter1(sample))
+
+//function mySort
+let a = [1, 10, 9, 7]
+let arr2 = [1, 2, 3, 4, 10, 6, 7, 8, 9, 5];
+let arr = ['t', 'r', 'o', 'l', 'o', 'lo'];
+
+const bubbleSort1 = array => {
+  let count = array.length - 1;
+  for (let i = 0; i < count; i++) {
+
+    for (let j = 0, value = count - i; j < value; j++) {
+
+      if (array[j] > array[j + 1]) {
+        let maxValue = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = maxValue;        
+      }
+    }
+  }
+  return array;
+};
+
+console.log(bubbleSort1(a))
+console.log(bubbleSort1(arr))
+console.log(bubbleSort1(arr2))
 

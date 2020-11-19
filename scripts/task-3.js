@@ -1,18 +1,31 @@
-//Реализовать функцию sum sum(1)(2)(3) // 6
+//Реализовать функцию sum(1)(2)(3) // 6
 
-function sum(firstArg) {
+function sum() {
 
-  let currentSum = firstArg;
+  let currentSum = 0;
 
-  function nextValue(secondArg) {
-    
-    currentSum += secondArg;
-    console.log(currentSum)
-    return nextValue;
+  for (let i = 0; i < arguments.length; i++) {
+    currentSum += arguments[i]
+  }
+
+  function nextValue(secondValue) {
+
+    if (arguments.length) {
+      currentSum += secondValue;
+      return nextValue;
+    } else {
+      return currentSum;
+    }
+
+  }
+
+  nextValue.toString = function () {
+    return currentSum
   }
 
   return nextValue;
 }
 
-sum(1)(2)(3) // 6
-sum(0)(1)(2)(3)(4)(5); // 15
+console.log(sum(1)(2)(3)) // 6
+Console.log(sum(0)(1)(2)(3)(4)(5)); // 15
+console.log(sum(2)(5)(5)(1)(7)) //20
