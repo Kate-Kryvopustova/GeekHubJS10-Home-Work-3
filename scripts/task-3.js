@@ -1,5 +1,3 @@
-//Реализовать функцию sum(1)(2)(3) // 6
-
 function sum() {
 
   let currentSum = 0;
@@ -26,6 +24,6 @@ function sum() {
   return nextValue;
 }
 
-console.log(sum(1)(2)(3)) // 6
-Console.log(sum(0)(1)(2)(3)(4)(5)); // 15
-console.log(sum(2)(5)(5)(1)(7)) //20
+sum(1)(2)(3);
+sum(0)(1)(2)(3)(4)(5);
+sum(2)(5)(5)(1)(7);

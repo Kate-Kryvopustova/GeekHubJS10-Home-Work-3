@@ -1,5 +1,3 @@
-//4) Реализовать функцию calculate calculate(3).add(2).multiply(2).result() // 10
-
 class myCalculator {
   constructor(number) {
     this.value = number;
@@ -21,5 +19,5 @@ class myCalculator {
 }
 
 
-const calculate = new myCalculator(3)
-console.log(calculate.add(2).multiply(2).result())
+const calculate = new myCalculator(3);
+calculate.add(2).multiply(2).result();

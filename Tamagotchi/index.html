@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Tamagotchi</title>
   <meta charset="utf-8">
@@ -13,20 +12,18 @@
 
 <body>
   <div class="wrapper">
-
     <header class="header">
       <h2 class="text">Меня зовут</h2>
       <h2 id="name-pet"></h2>
-      
     </header>
 
     <div class="register-Pet">
       <div class="register__name">
-          <input type="text" id="inputName" placeholder="Имя питомца :)"/>
+        <input type="text" id="inputName" placeholder="Имя питомца :)" />
       </div>
       <div class="register__time-life-pet">
         <span>Время жизни питомца</span>
-        <input type="number" id="timeForLive" value="0"/>
+        <input type="number" id="timeForLive" value="0" />
       </div>
       <div class="register__button">
         <button type="button" id="start" class="btn btn-outline-dark">Начало игры</button>
@@ -36,13 +33,12 @@
 
     <h4 id="warning"></h4>
     <div class="content">
-      
       <div class="content__add-time-life">
         <span>Покормить питомца</span>
         <input type="number" id="feedPet" value="0" />
       </div>
 
-      <div class="content__buttons">
+      <div id="buttons" class="content__buttons">
         <button type="button" id="addFood" class="btn btn-outline-dark">Покормить</button>
         <button type="button" id="drink" class="btn btn-outline-dark">Напоить</button>
         <button type="button" id="play" class="btn btn-outline-dark">Поиграть</button>
@@ -51,34 +47,36 @@
         <button type="button" id="song" class="btn btn-outline-dark">Спеть песню</button>
       </div>
     </div>
-    
+
     <div class="content__day-life">
-      <strong>Дней жизни:</strong><h2 id="day"></h2>
+      <strong>Дней жизни:</strong>
+      <h2 id="day"></h2>
     </div>
 
-    <div id='content__info'></div>
-    <div id='content__info__milk'></div>
-    <div id='content__info__sleep'></div>
-    <div id='content__info__happy'></div>
+    <div class="content-info-pet">
+      <div id='content__info'></div>
+      <div id='content__info__milk'></div>
+      <div id='content__info__sleep'></div>
+      <div id='content__info__happy'></div>
+    </div>
 
     <div class="info-pet">
       <div id="info__water">
-        <span>Количество молочка:</span><h4 id="milk"></h4>
+        <span>Количество молочка:</span>
+        <h4 id="milk"></h4>
       </div>
       <div id="info__happy">
-        <span>Уровень счастья:</span><h4 id="happy_pet"></h4>
+        <span>Уровень счастья:</span>
+        <h4 id="happy_pet"></h4>
       </div>
       <div id="info__sleep">
-        <span>Уровень сна:</span><h4 id="sleep_pet"></h4>
+        <span>Уровень сна:</span>
+        <h4 id="sleep_pet"></h4>
       </div>
-      
     </div>
   </div>
-  
-
 
   <script src="index.js"></script>
-  <script src="../scripts/task-5.js"></script>
 </body>
 
 </html>

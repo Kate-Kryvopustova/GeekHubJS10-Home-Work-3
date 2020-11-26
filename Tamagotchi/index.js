@@ -4,6 +4,7 @@ class Tamagotchi {
     this.milk = 100;
     this.sleep = 100;
     this.happy = 100;
+    
     this.startGame = document.getElementById('start');
     this.namePet = document.getElementById('inputName');
     this.name = document.getElementById('name-pet');
@@ -24,6 +25,7 @@ class Tamagotchi {
     this.infoSleep = document.getElementById('content__info__sleep');
     this.petSleep = document.getElementById('sleep_pet');
     this.petHappy = document.getElementById('happy_pet');
+    this.buttons = document.getElementById('buttons');
 
     this.game = this.game.bind(this);
     this.addLifePet = this.addLifePet.bind(this);
@@ -33,7 +35,6 @@ class Tamagotchi {
     this.petAPet = this.petAPet.bind(this);
     this.songForPet = this.songForPet.bind(this);
 
-    // this.bindEvents();
   }
 
   bindEvents() {
@@ -58,8 +59,9 @@ class Tamagotchi {
     this.info = '';
 
     if(this.counter === 0) {
-      this.info = 'You pet is dead, sorry';
+      alert('You pet is dead, sorry');
       this.stop();
+      return window.location.reload();
     } else if(this.counter < this.smallLife) {
       this.info = 'I feel myself bad';
     } else if(this.counter < this.midleLife) {
@@ -73,8 +75,9 @@ class Tamagotchi {
     this.info = '';
 
     if(this.milk < 20) {
-      this.info = 'Your pet died because you are greedy and did not give him milk ...';
+      alert('Your pet died because you are greedy and did not give him milk ...');
       this.stop();
+      return window.location.reload()
     }
       
     this.milkForPet.innerHTML = this.milk;
@@ -85,8 +88,9 @@ class Tamagotchi {
     this.info = '';
 
     if(this.sleep < 20) {
-      this.info = 'Your pet has died of overwork...';
+      alert('Your pet has died of overwork...');
       this.stop();
+      return window.location.reload();
     }
 
     this.petSleep.innerHTML = this.sleep;
@@ -97,8 +101,9 @@ class Tamagotchi {
     this.info = '';
 
     if(this.happy < 20) {
-      this.info = 'Your pet died unhappy! You can t do this with him!';
+      alert('Your pet died unhappy! You can t do this with him!');
       this.stop();   
+      return window.location.reload();
     }
 
     this.petHappy.innerHTML = this.happy;
@@ -129,7 +134,11 @@ class Tamagotchi {
     if(this.warningMessage.style.display !== 'none') {
       this.warningMessage.style.display = 'none';
     }
-
+    
+    if(this.buttons.style.display !== 'none') {
+      this.buttons.style.display = 'block';
+    }
+    
     this.renderDayLife();
     this.timerDay = setInterval(() => this.renderDayLife(), 2500);  
 
@@ -190,6 +199,10 @@ class Tamagotchi {
   }
 
   songForPet() {
+    if(this.happy < 15) {
+      alert('You sang very badly and killed your pet');
+      return window.location.reload();
+    }
     this.happy -= 15;
     this.infoHappy.innerHTML = 'You sing terribly! I beg you to stop.';
   }

@@ -88,6 +88,14 @@ button {
   text-align: center;
 }
 
+.content-info-pet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #F86C48;
+}
+
 #content__info {
   text-align: center;
   color: red;
@@ -120,4 +128,8 @@ button {
 
 #info__sleep{
   flex-grow: 1;
+}
+
+#buttons {
+  display: none;
 }
