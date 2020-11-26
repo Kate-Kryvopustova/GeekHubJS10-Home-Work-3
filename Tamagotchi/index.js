@@ -4,6 +4,18 @@ class Tamagotchi {
     this.milk = 100;
     this.sleep = 100;
     this.happy = 100;
+    this.maxValueForLife = 100;
+    this.minValueForLife = 20;
+    this.phrases = {
+      addMilk: 'Yummy milk ^_^',
+      enoghtMilk: 'Nope! I dont want to drink!',
+      addHappy: 'Mrr-mrr-mrrr',
+      fullHappy: 'I am completely happy',
+      playPets :'I like to play with you )',
+      enoughtPlayWithPet: `I am tired and want to sleep!`,
+      enoughtSleep: `I've slept enough!`,
+      addSleep: 'Mrr-mrr-mrrr'
+    }
     
     this.startGame = document.getElementById('start');
     this.namePet = document.getElementById('inputName');
@@ -34,7 +46,6 @@ class Tamagotchi {
     this.giveSleepPet = this.giveSleepPet.bind(this);
     this.petAPet = this.petAPet.bind(this);
     this.songForPet = this.songForPet.bind(this);
-
   }
 
   bindEvents() {
@@ -71,10 +82,11 @@ class Tamagotchi {
     this.infoField.innerHTML = this.info;
     this.counter--;
   } 
+
   renderMilkPet() {
     this.info = '';
 
-    if(this.milk < 20) {
+    if(this.milk < this.minValueForLife) {
       alert('Your pet died because you are greedy and did not give him milk ...');
       this.stop();
       return window.location.reload()
@@ -84,10 +96,11 @@ class Tamagotchi {
     this.infoMilk.innerHTML = this.info;
     this.milk--;
   }
+
   renderSleepPet() {
     this.info = '';
 
-    if(this.sleep < 20) {
+    if(this.sleep < this.minValueForLife) {
       alert('Your pet has died of overwork...');
       this.stop();
       return window.location.reload();
@@ -95,13 +108,14 @@ class Tamagotchi {
 
     this.petSleep.innerHTML = this.sleep;
     this.infoSleep.innerHTML = this.info;
-    this.sleep--
+    this.sleep--;
   }
+
   renderHappyPet() {
     this.info = '';
 
-    if(this.happy < 20) {
-      alert('Your pet died unhappy! You can t do this with him!');
+    if(this.happy < this.minValueForLife) {
+      alert(`Your pet died unhappy! You can't do this with him!`);
       this.stop();   
       return window.location.reload();
     }
@@ -110,6 +124,7 @@ class Tamagotchi {
     this.infoHappy.innerHTML = this.info;
     this.happy--;
   }
+
   stop() {
     clearInterval(this.timerDay);
     clearInterval(this.timerMilk);
@@ -158,56 +173,38 @@ class Tamagotchi {
   }
 
   givePetMilk() {
-    if(this.milk < 98 ) {
-      this.infoMilk.innerHTML = 'Yummy milk ^_^';
-    } else {
-      return this.infoMilk.innerHTML = 'Nope! I dont want to drink!';
-    }
-
-    this.milk += 3;
+    this.updateHTMLInfo(this.milk, this.maxValueForLife, this.infoMilk, this.phrases.addMilk, this.phrases.enoghtMilk);
+    if(this.milk < this.maxValueForLife) this.milk += 3;
   } 
 
   playWithPet() {
-    if(this.happy < 100) {
-      this.infoHappy.innerHTML = 'I like to play with you )';
-    } else {
-      return this.infoHappy.innerHTML = 'I ve played enough )';
-    }
-
-    this.sleep--;
-    this.happy++;
+    this.updateHTMLInfo(this.happy, this.maxValueForLife, this.infoHappy, this.phrases.playPets,  this.phrases.enoughtPlayWithPet);
+    if (this.happy < this.maxValueForLife) this.happy++, this.sleep--;
   }
 
   giveSleepPet() {
-    if(this.sleep < 100) {
-      this.infoSleep.innerHTML = 'Mrr-mrr-mrrr';
-    } else {
-      return this.infoSleep.innerHTML = `I've slept enough!`;
-    }
-
-    this.sleep += 2;
+    this.updateHTMLInfo(this.sleep, this.maxValueForLife, this.infoSleep, this.phrases.addSleep, this.phrases.enoughtSleep);
+    if(this.sleep < this.maxValueForLife) this.sleep += 2;
   }
 
   petAPet() {
-    if(this.happy < 100) {
-      this.infoHappy.innerHTML = 'Mrr-mrr-mrrr';
-    } else {
-      return this.infoHappy.innerHTML = 'I am completely happy';
-    }
-
-    this.happy++;
+    this.updateHTMLInfo(this.happy, this.maxValueForLife, this.infoHappy, this.phrases.addHappy, this.phrases.fullHappy);
+    if (this.happy < this.maxValueForLife) this.happy++;
   }
 
   songForPet() {
-    if(this.happy < 15) {
+    this.happy -= this.minValueForLife;
+    if(this.happy < this.minValueForLife) {
       alert('You sang very badly and killed your pet');
       return window.location.reload();
     }
-    this.happy -= 15;
+    
     this.infoHappy.innerHTML = 'You sing terribly! I beg you to stop.';
+  }
+
+  updateHTMLInfo(resource, maxLimit, htmlNode, positiveMessage, negativeMessage) {
+    htmlNode.innerHTML = resource < maxLimit ? positiveMessage : negativeMessage;
   }
 } 
 const pet = new Tamagotchi();
 pet.bindEvents();
-
-
