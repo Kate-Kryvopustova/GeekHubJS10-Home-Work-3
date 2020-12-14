@@ -134,13 +134,17 @@ class Tamagotchi {
 
   game() {
     this.warningMessage = document.getElementById('warning');
-    this.name.innerHTML = this.namePet.value;
     this.dayLife.innerHTML = this.inputTime.value;
     this.fullLife = this.inputTime.value;
     this.counter = Number(this.fullLife);
     this.midleLife = Math.round(this.fullLife * 50 / 100);
     this.smallLife = Math.round(this.fullLife * 20 / 100 );
     
+    if(this.namePet.value === '') {
+      return this.warningMessage.innerHTML = 'You must give your pet a name';
+    } else {
+      this.name.innerHTML = this.namePet.value;
+    }
 
     if(Number(this.fullLife) === 0) {
       return this.warningMessage.innerHTML = 'You need to set the number of days of the pets life';
@@ -153,6 +157,7 @@ class Tamagotchi {
     if(this.buttons.style.display !== 'none') {
       this.buttons.style.display = 'block';
     }
+    this.startGame.setAttribute('disabled', true);
     
     this.renderDayLife();
     this.timerDay = setInterval(() => this.renderDayLife(), 2500);  
@@ -174,7 +179,7 @@ class Tamagotchi {
 
   givePetMilk() {
     this.updateHTMLInfo(this.milk, this.maxValueForLife, this.infoMilk, this.phrases.addMilk, this.phrases.enoghtMilk);
-    if(this.milk < this.maxValueForLife) this.milk += 3;
+    if(this.milk < this.maxValueForLife) this.milk++;
   } 
 
   playWithPet() {
@@ -184,7 +189,7 @@ class Tamagotchi {
 
   giveSleepPet() {
     this.updateHTMLInfo(this.sleep, this.maxValueForLife, this.infoSleep, this.phrases.addSleep, this.phrases.enoughtSleep);
-    if(this.sleep < this.maxValueForLife) this.sleep += 2;
+    if(this.sleep < this.maxValueForLife) this.sleep++;
   }
 
   petAPet() {
