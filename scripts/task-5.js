@@ -11,9 +11,8 @@ Array.prototype.myForEach = function(callback) {
   for( let i = 0; i < this.length; i++ ) {
     this[i] = callback(this[i], i, this);
   }
-  return this;
 }
-arr2.myForEach(value => value * 2);
+arr2.myForEach(value => console.log(value));
 
 //function myMap
 Array.prototype.myMapp = function(callback) {
@@ -34,7 +33,7 @@ Array.prototype.myFind = function (callback) {
      return this[i];
      }
    }
- return undefined;
+ return;
 }
 arr2.myFind(elem => elem === 15);
 arr2.myFind(elem => elem === 10);
