@@ -6,6 +6,7 @@ const sample = [1, 2, 3, 4, 5];
 const a = [1, 10, 9, 7]
 const arr2 = [1, 2, 3, 4, 10, 6, 7, 8, 9, 5];
 const arr = ['t', 'r', 'o', 'l', 'o', 'lo'];
+const arr3 = [7, 118, -33, 4, 5, -5, 123, 12, -453, 0, 1213, 234, 324, 34, NaN, Infinity, 567, 45, 4324 ]
 
 Array.prototype.myForEach = function(callback) {
   for( let i = 0; i < this.length; i++ ) {
@@ -57,7 +58,7 @@ Array.prototype.bubbleMySort = function() {
 
     for (let j = 0, value = count - i; j < value; j++) {
 
-      if (this[j] > this[j + 1]) {
+      if (String(this[j]) > String(this[j + 1])) {
         let maxValue = this[j];
         this[j] = this[j + 1];
         this[j + 1] = maxValue;        
@@ -69,4 +70,4 @@ Array.prototype.bubbleMySort = function() {
 
 a.bubbleMySort();
 arr.bubbleMySort();
-arr2.bubbleMySort();
+arr3.bubbleMySort();
